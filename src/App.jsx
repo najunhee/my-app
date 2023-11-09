@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { ColorMessage } from './components/ColordMessage';
+import { useState, memo } from 'react';
+import { Child1 } from './components/Child1';
+import { Child4 } from './components/Child4';
 
-export const App = () => {
+export const App = memo(() => {
+  console.log('App 랜더링');
 
   const [num, setNum] = useState(0);
 
-  const onclickButton = () => {
-    setNum((prev) => prev+1);
+  const onClickButton = () => {
+    setNum((prog) => prog + 1);
   };
 
   return (
     <>
-      <h1 style={{ color: 'red' }}>안녕하세요!</h1>
-      <ColorMessage color="blue">잘 지내시죠?</ColorMessage>
-      <ColorMessage color="pink">잘 지냅니다!</ColorMessage>
-      <button onClick={onclickButton}>버튼</button>
+      <button onClick={onClickButton}>버튼</button>
       <p>{num}</p>
+      <Child1 />
+      <Child4 />
     </>
   );
-};
+});
