@@ -12,13 +12,12 @@ const style = {
     alignItems: "center"
 }
 
-export const Card = (props) => {
-    const { isAdmin } = props;
-
+export const Card = () => {
+    
     return(
         <div style={style}>
             <p>야마다 타로</p>
-            <EditButton isAdmin={isAdmin}/>
+            <EditButton />
         </div>
     )
 }
