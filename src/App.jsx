@@ -3,6 +3,8 @@ import { ColorMessage } from './components/ColordMessage';
 
 export const App = () => {
 
+  console.log("렌더링");
+
   const [num, setNum] = useState(0);
 
   const onclickButton = () => {
