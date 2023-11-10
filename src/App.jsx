@@ -1,27 +1,19 @@
-import { useState, memo, useCallback } from 'react';
-import { Child1 } from './components/Child1';
-import { Child4 } from './components/Child4';
+import { useState } from "react";
+import { Card } from "./components/Card";
 
-export const App = memo(() => {
-  console.log('App 랜더링');
 
-  const [num, setNum] = useState(0);
+export const App = () => {
 
-  const onClickButton = () => {
-    setNum((prog) => prog + 1);
-  };
+    const [isAdmin, setIsAdmin] = useState(false);
 
-  const onClickReset = useCallback(() => {
-    setNum(0);
-  }, []);
+    const onClickSwitch = () => setIsAdmin(!isAdmin);
 
-  return (
-    <>
-      <button onClick={onClickButton}>버튼</button>
-      <p>{num}</p>
-      {/* Props로 함수설정*/}
-      <Child1 onClickReset={onClickReset} />
-      <Child4 />
-    </>
-  );
-});
+    return (
+        <div>
+            {/** App -> Card -> EditButton 으로 Props를 전달하고 있다 */}
+            {isAdmin? <span>관리자입니다</span> : <span>관리자가 아닙니다</span>}
+            <button onClick={onClickSwitch}>전환</button>
+            <Card isAdmin={isAdmin}/>
+        </div>
+    )
+}
